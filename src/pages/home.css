@@ -1,0 +1,45 @@
+.navbar {
+  height: 235px;
+  background-color: #3C3963;
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+
+.inner-navbar {
+  background-color:#1F1D33;
+}
+
+.background-web {
+  background-color: #3C3963;
+}
+
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 160px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+
+.content {
+  border: 1px solid #6c73a6;
+  
+}
+
+.content-nav-bar {
+  background: #1F1D33;
+  border-bottom: solid 1px #6C73A6;
+  color: #cfcfcf;
+}
+
+.content-nav-bar-header {
+  color: #c7c7c7;
+  padding: 0px 10px 0px 10px;
+  height: 2.643em;
+  border-right: solid 1px #6C73A6;
+  line-height: 2.643em;
+}
