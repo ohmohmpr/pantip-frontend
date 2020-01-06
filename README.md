@@ -1,2 +1,2 @@
 # pantip-frontend
-My first fronend project on GitHub
+My first frontend project on GitHub
