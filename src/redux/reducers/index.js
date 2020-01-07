@@ -32,7 +32,6 @@ function rootReducer(state = initialState, action) {
 const reducers = combineReducers({
     user: userReducer,
     rootReducer: rootReducer
-    
   });
   
   

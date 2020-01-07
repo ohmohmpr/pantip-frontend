@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Form, Input, Button } from 'antd'
-import Axios from '../config/axios.setup'
+import Axios from '../config/api.service'
 
 
 class FormForSignUp extends Component {
@@ -36,14 +36,13 @@ class FormForSignUp extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, value) => {
-      console.log(value.username, value.password)
       if (!err) {
         Axios.post('/registerUser', {
           username: value.username,
           password: value.password,
         })
           .then(result => {
-            alert("กรุณากลับสู่หน้า Login")
+            alert("สมัครเสร็จเรียบร้อย กรุณากลับสู่หน้า Login")
             console.log(result)
           })
           .catch(err => {

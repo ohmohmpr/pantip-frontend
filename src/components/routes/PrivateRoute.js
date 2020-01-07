@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import * as allRoutes from './index'
+import * as allComponents from './index'
 import rolesConfig from '../../config/roles'
-import { Route, withRouter } from 'react-router-dom'; //, Redirect
-// import { Switch } from 'antd';
-
+import { Route, withRouter, Redirect, Switch } from 'react-router-dom';
 
 class PrivateRoute extends Component {
   constructor(props) {
@@ -17,57 +15,36 @@ class PrivateRoute extends Component {
   componentDidMount() {
     let role = this.props.role || 'guest'
     console.log(role)
-    // console.log([rolesConfig['guest'].redirect])
-    // console.log(rolesConfig[role].redirect)
     if (role) {
       this.setState({
         allowedRoutes: rolesConfig[role].routes,
-        // redirectRoutes: [rolesConfig[role].redirect]
+        redirectRoutes: [rolesConfig[role].redirect]
       })
-    } else {
-      this.props.history.push('/login');
     }
-    // console.log([rolesConfig[role].redirect])
-    // console.log(this.state.allowedRoutes)
-    // console.log(this.state.redirectRoutes)
+    // else {
+    //   this.props.history.push('/login');
+    // }
   }
 
   render() {
     return (
       <>
-        {this.state.allowedRoutes.map(route =>
-        
-          // (
-            
-          //   <Switch>
-          //     {if ({route.url} == 'topic')
-          //     {
-
-          //     }}
-              < Route
-                exact path={route.url}
-                component={allRoutes[route.component]}
-                key={route.url}
-              />
-          //     <Route path="/blog/:slug">
-          //       <BlogPost />
-          //     </Route>
-
-          //   </Switch>
-
-          // )
-        )}
-        {/* {this.state.redirectRoutes.map(url => {
-          <Redirect to={url} />
-        })} */}
+        <Switch>
+          {this.state.allowedRoutes.map(route =>
+            < Route
+              key={route.url}
+              exact path={route.url}
+              component={allComponents[route.component]}
+              
+            />
+          )}
+          {this.state.redirectRoutes.map(url =>
+            <Redirect to={url} />
+          )}
+        </Switch>
       </>
     )
   }
 }
 
 export default withRouter(PrivateRoute);
-
-// function BlogPost() {
-//   let { slug } = useParams();
-//   return <div>Now showing post {slug}</div>;
-// }

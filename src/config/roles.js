@@ -61,8 +61,7 @@ const components = {
         components.signup,
         components.home,
         components.topic,
-        components.myfeed,
       ],
-      redirect: '/'
+      redirect: '/login'
     }
   }
