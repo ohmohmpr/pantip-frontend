@@ -1,25 +1,29 @@
 import React from 'react'
+import { Switch } from 'react-router-dom'
 import './App.css'
-import Home from './pages/Home'
-import Login from './pages/authentication/Login'
-import Topic from './pages/Topic'
-import Forum from './pages/forum'
-import SignUp from './pages/SignUp'
-import { Route } from 'react-router-dom'
+import { connect } from 'react-redux'
+import PrivateRoute from './components/routes/PrivateRoute';
 
-function App() {
-  return (
-    <div className="App">
-      <div className="App container">
-          <Route exact path="/" component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/topic" component={Topic} />
-          <Route path="/forum" component={Forum} />
-          <Route path="/topic/2" component={Topic} />
-          <Route path="/SignUp" component={SignUp} />
+class App extends React.Component {
+  render() {
+    const role = this.props.user.role
+    return (
+      <div className="App">
+        <div className="App container">
+          <Switch>
+            <PrivateRoute role={role} />
+          </Switch>
         </div>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
-export default App;
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, null)(App);

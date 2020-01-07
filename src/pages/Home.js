@@ -4,9 +4,31 @@ import './home.css';
 import NewFeed from '../components/NewFeed';
 import Navbar from '../components/Navbar';
 import Tag from '../components/Tag';
+// import PostList2 from '../components/PostList2';
+// import Axios from '../config/api.service'
 
 
 export default class Home extends Component {
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     owner: {},
+  //     postList: []
+  //   }
+  // }
+  // componentDidMount() {
+
+  //   Axios.get('/posts').then((response) => {
+  //     console.log(response.data[0])
+  //     console.log(response.data[1])
+  //     this.setState({
+  //       postList: response.data
+  //     })
+  //     console.log(this.state.postList[0])
+  //   })
+  // }
+
+
   render() {
     return (
       <Row>
@@ -33,10 +55,12 @@ export default class Home extends Component {
                   </div>
                 </Carousel>
               </Row>
-              
+
               <Row type="flex" justify="space-between" className="background-web" style={{ backgroundColor: '#3C3963' }}>
-                <Col className="content" span={17} style={{ backgroundColor: "white" }}>
+                <Col className="content" span={17} >
                   <NewFeed />
+                    
+                  {/* <PostList2 postList={this.state.postList[0]} /> */}
 
                 </Col>
 

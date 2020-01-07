@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Form, Input, Button } from 'antd'
 import './FormForLogin.css'
-import Axios from '../config/axios.setup'
+import Axios from '../config/api.service'
 import jwtDecode from 'jwt-decode'
 import { login } from '../redux/actions'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom';
 
 
 class FormForLogin extends Component {
@@ -18,12 +19,13 @@ class FormForLogin extends Component {
                     password: values.password
                 })
                     .then(result => {
+                        console.log(result)
                         const user = jwtDecode(result.data.token)
                         console.log(user)
                         this.props.login(user, result.data.token)
                         console.log(this.props.login(user, result.data.token))
-                        this.props.history.push('/')
-                        window.location.reload(true);
+                        // this.props.history.push('/')
+                        // window.location.reload(true);
                     })
                     .catch(err => {
                         console.error(err);
@@ -93,5 +95,5 @@ const mapDispatchToProps = {
     login: login
   }
 
-const LoginForm = Form.create({ name: 'login' })(FormForLogin);
-export default connect(null, mapDispatchToProps)(LoginForm)
+const LoginForm = Form.create({ username: 'login' })(FormForLogin);
+export default withRouter(connect(null, mapDispatchToProps)(LoginForm))

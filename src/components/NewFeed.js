@@ -1,14 +1,27 @@
 import React, { Component } from 'react'
-import { Row, Col } from 'antd'
+import { Row, Col, Button } from 'antd'
 import { connect } from 'react-redux'
-import PostList from '../pages/PostList'
+import PostList from './PostList'
 import { getData } from "../redux/actions"
+import Axios from '../config/api.service'
 
 class NewFeed extends Component {
 
 
-    handleClick = () => {
-        console.log(this.props.getData());
+    // handleClick = () => {
+    //     console.log(this.props.getData());
+    // }
+
+
+    handleAcceptFriend = () => {
+        console.log('tset')
+        Axios.get('/post-list')
+            .then(result => {
+                console.log(result)
+            })
+            .catch(err => {
+                console.error(err);
+            })
     }
     render() {
         return (
@@ -18,7 +31,7 @@ class NewFeed extends Component {
                         <a
                             href="#top"
                             type="button"
-                            onClick={() => this.handleClick()}
+                            // onClick={() => this.handleClick()}
                             style={{
                                 borderRight: 'solid 1px #6C73A6',
                                 color: "#c7c7c7",
@@ -27,6 +40,9 @@ class NewFeed extends Component {
                             }}>
                             <span>Pantip Now</span>
                         </a>
+                    </Col>
+                    <Col>
+                        <Button onClick={() => this.handleAcceptFriend()}>ยอมรับเพื่อน</Button>
                     </Col>
                     <Col>
                         <a
@@ -51,7 +67,7 @@ class NewFeed extends Component {
 }
 function mapStateToProps(state) {
     return {
-        posts: state.remotePosts.slice(11, 20)
+        posts: state.remotePosts
     };
 }
 export default connect(

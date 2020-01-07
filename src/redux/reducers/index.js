@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+import userReducer from './userReducer'
 
 const initialState = {
     articles: [],
@@ -26,5 +28,14 @@ function rootReducer(state = initialState, action) {
     return state;
 };
 
-export default rootReducer;
+
+const reducers = combineReducers({
+    user: userReducer,
+    rootReducer: rootReducer
+    
+  });
+  
+  
+export default reducers
+
 
