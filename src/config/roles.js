@@ -31,6 +31,10 @@ const components = {
     forum: {
       component: 'Forum',
       url: '/forum',
+    },
+    myfeed: {
+      component: 'Home',
+      url: '/myfeed',
     }
   };
   
@@ -46,6 +50,8 @@ const components = {
         components.home,
         components.profile,
         components.forum,
+        components.topic,
+        components.myfeed,
       ],
       redirect: '/'
     },
@@ -55,6 +61,7 @@ const components = {
         components.signup,
         components.home,
         components.topic,
+        components.myfeed,
       ],
       redirect: '/'
     }

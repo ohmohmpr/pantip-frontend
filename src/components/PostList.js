@@ -26,22 +26,16 @@ export class PostList extends Component {
       this.setState({
         postList: response.data
       })
-      // console.log(this.state.postList)
+      console.log(this.state.postList)
     })
   }
-
-
-
-
-
-
   render() {
     let url = 'topic'
     return (
       <>
         {this.state.postList.map(post => (
           <div style={{ borderBottom: "1px solid #363358", width: "100%", padding: "5px 10px 5px 10px", backgroundColor: "#2D2A49", color: "#7E79AD", float: "left", textAlign: 'left' }} key={post.id}>
-            
+
             <Link to={`${url}/${post.id}`} style={{ color: "#c2c2c2", marginBottom: "4px", fontSize: "120%" }} >{post.header}</Link>
             <br />
             {post.content.slice(0, 160)}
