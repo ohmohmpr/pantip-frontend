@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Form, Input, Button } from 'antd'
+import { Form, Input, Button } from 'antd'
 import Axios from '../config/api.service'
 
 
@@ -68,7 +68,7 @@ class FormForSignUp extends Component {
         padding: "10px"
       }} >
         <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-          <Row></Row>
+          
           <Form.Item label='อีเมล/นามแฝง'  >
             {getFieldDecorator('username', {
               rules: [

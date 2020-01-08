@@ -26,7 +26,7 @@ const components = {
     },
     topic: {
       component: 'Topic',
-      url: '/topic/2',
+      url: '/topic',
     },
     forum: {
       component: 'Forum',
@@ -35,6 +35,10 @@ const components = {
     myfeed: {
       component: 'Home',
       url: '/myfeed',
+    },
+    roomforum: {
+      component: 'RoomForum',
+      url: '/siam',
     }
   };
   
@@ -52,6 +56,7 @@ const components = {
         components.forum,
         components.topic,
         components.myfeed,
+        components.roomforum,
       ],
       redirect: '/'
     },
@@ -61,6 +66,7 @@ const components = {
         components.signup,
         components.home,
         components.topic,
+        components.roomforum,
       ],
       redirect: '/login'
     }

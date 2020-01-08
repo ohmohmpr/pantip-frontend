@@ -1,17 +1,12 @@
 import React, { Component } from 'react'
 import Axios from '../config/api.service'
-// import { Row, Col, Card } from 'antd';
-// import {
-//   Link,
-// } from "react-router-dom";
 
-
-export class PostList extends Component {
+export default class Room extends Component {
   constructor(props) {
     super(props)
     this.state = {
       postList: [],
-      topicNumber : ''
+      topicNumber: ''
     }
   }
 
@@ -37,9 +32,7 @@ export class PostList extends Component {
     return (
       <>
         {this.state.postList.map(post => (
-          //  <a href="https://google.com" target="_blank">CSV</a>
           <div style={{ borderBottom: "1px solid #363358", width: "100%", padding: "5px 10px 5px 10px", backgroundColor: "#2D2A49", color: "#7E79AD", float: "left", textAlign: 'left' }} key={post.id}>
-{/* onClick={this.handleClick()} */}
             <a href={`${url}/${post.id}`} target="_blank" rel="noopener noreferrer" style={{ color: "#c2c2c2", marginBottom: "4px", fontSize: "120%" }}  >{post.topic}</a>
             <br />
             {post.content.slice(0, 160)}
@@ -51,7 +44,3 @@ export class PostList extends Component {
     )
   }
 }
-
-
-export default PostList;
-

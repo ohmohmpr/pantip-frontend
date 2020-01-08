@@ -6,30 +6,55 @@ import Axios from '../config/api.service'
 const { TextArea } = Input;
 
 class CreatePost extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      fileList: [],
+    }
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, value) => {
-      console.log(value.topic, value.content)
+      let payload = new FormData()
+      payload.append('photoPost', this.state.fileList[0])
+      payload.append('topic', value.topic)
+      payload.append('content', value.content)
       if (!err) {
-        Axios.post('/create-post', {
-          topic: value.topic,
-          content: value.content,
-        })
+        Axios.post('/create-post', payload)
           .then(result => {
-            console.log('Successful')
             console.log(result)
           })
           .catch(err => {
             console.log(err)
           })
-        // this.props.form.resetFields()
       }
     })
   }
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { fileList } = this.state;
+    const props = {
+      onRemove: file => {
+        this.setState(state => {
+          const index = state.fileList.indexOf(file);
+          const newFileList = state.fileList.slice();
+          newFileList.splice(index, 1);
+          return {
+            fileList: newFileList,
+          };
+        });
+      },
+      beforeUpload: file => {
+        this.setState(state => ({
+          fileList: [...state.fileList, file],
+        }));
+        return false;
+      },
+      fileList,
+    }
+
     return (
       <div style={{ backgroundColor: "#3C3963" }}>
         <div>
@@ -75,6 +100,15 @@ class CreatePost extends Component {
                             ],
                           })(<TextArea autoSize={{ minRows: 10, maxRows: 20 }} style={{ marginBottom: "10px" }} />)}
                         </Form.Item>
+                        <Form.Item label="Upload" extra="Select file image">
+
+                          <Upload {...props}>
+                            <Button>
+                              <Icon type="upload" /> Select Photo
+                              </Button>
+                          </Upload>
+
+                        </Form.Item>
                         <br />
                       </Col>
                     </Row>
@@ -95,8 +129,6 @@ class CreatePost extends Component {
                     </Row>
                   </Col>
 
-                  
-
                 </Form >
 
               </Row>
@@ -110,19 +142,3 @@ class CreatePost extends Component {
 
 const Forum = Form.create()(CreatePost);
 export default Forum
-
-
-{/* <Col>
-                    <Row>
-                      <Col>
-                        
-                            < Upload >
-                              <Button>
-                                <Icon type="upload" /> Select Photo
-                            </Button>
-                            </Upload>
-                          
-                      </Col>
-                    </Row>
-                  </Col>
-                  <br /> */}
