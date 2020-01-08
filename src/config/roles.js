@@ -8,6 +8,10 @@ const components = {
       component: 'Signup',
       url: '/signup',
     },
+    createtopic: {
+      component: 'CreateTopicTrue',
+      url: '/createtopic',
+    },
     changepassword: {
       component: 'ChangePassword',
       url: '/changepassword',
@@ -28,18 +32,14 @@ const components = {
       component: 'Topic',
       url: '/topic',
     },
-    forum: {
-      component: 'Forum',
-      url: '/forum',
-    },
     myfeed: {
       component: 'Home',
       url: '/myfeed',
     },
     roomforum: {
       component: 'RoomForum',
-      url: '/siam',
-    }
+      url: '/',
+    },
   };
   
   export default {
@@ -53,10 +53,9 @@ const components = {
         components.friend,
         components.home,
         components.profile,
-        components.forum,
+        components.createtopic,
         components.topic,
         components.myfeed,
-        components.roomforum,
       ],
       redirect: '/'
     },

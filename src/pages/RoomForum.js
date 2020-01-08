@@ -18,7 +18,7 @@ export default class RoomForum extends Component {
 
             <Row type="flex" justify="center">
               <Col span={12} style={{ height: '100vh' }}>
-                <Room />
+                <Room con={this.props.con}/>
               </Col>
             </Row>
 

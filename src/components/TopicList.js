@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import { Row, Col, Input, Card, Button, Form } from 'antd';
-
+import { withRouter } from "react-router";
 
 import Axios from '../config/api.service'
 
 const { TextArea } = Input;
-
-
-
 
 class TopicList1 extends Component {
   constructor(props) {
@@ -19,21 +16,17 @@ class TopicList1 extends Component {
     }
   }
 
-
   componentDidMount() {
-
-    Axios.get(`/topic/${this.props.con}`).then((response) => {
+    let path = this.props.location.pathname
+    let lastSlash = path.lastIndexOf("/")
+    let page = path.slice(lastSlash + 1)
+    Axios.get(`${path}`).then((response) => {
       this.setState({
         post: response.data,
-        commentsList: response.data.comments
+        commentsList: response.data.comments,
+        page: page,
       })
-      // console.log(this.state.commentsList)
-      // console.log(this.state.post)
     })
-    this.setState({
-      page: this.props.con
-    })
-
   }
 
   handleSubmit = (e) => {
@@ -44,7 +37,7 @@ class TopicList1 extends Component {
       if (!err) {
         Axios.post(`/create-comment/${post_id}`, {
           content: value.comment,
-          post_id: this.props.con,
+          post_id: post_id,
         })
           .then(result => {
             alert("done")
@@ -61,6 +54,7 @@ class TopicList1 extends Component {
 
 
   render() {
+
     const { getFieldDecorator } = this.props.form;
     return (
       <Row type="flex" justify="center">
@@ -71,6 +65,7 @@ class TopicList1 extends Component {
               {this.state.post.content}
               <br />
               สมาชิกหมายเลข {this.state.post.user_id}
+
             </div>
           </Card>
           {this.state.commentsList.map(comment => (
@@ -80,12 +75,12 @@ class TopicList1 extends Component {
               <div style={{ color: "#cccccc" }}>
                 {comment.content}
                 <br />
-                {comment.user_id}
+                สมาชิกหมายเลข {comment.user_id}
               </div>
             </Card>
           ))}
           <Card style={{ backgroundColor: "#093A43", border: "solid 1px #8e8ba7", marginTop: "40px", marginBottom: "80px" }}>
-            <h2 style={{ color: "#FFCD05" }}>แสดงความคิดเห็นที่นี้ </h2>
+            {/* <h2 style={{ color: "#FFCD05" }}>แสดงความคิดเห็นที่นี้ </h2> */}
             <Form onSubmit={this.handleSubmit}>
               <Form.Item >
                 {getFieldDecorator('comment', {
@@ -108,9 +103,10 @@ class TopicList1 extends Component {
           </Card>
 
         </Col>
+
       </Row>
     )
   }
 }
 const TopicList = Form.create()(TopicList1);
-export default TopicList
+export default withRouter(TopicList)

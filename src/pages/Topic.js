@@ -7,7 +7,7 @@ export default class Topic extends Component {
         return (
             <div style={{ backgroundColor: "#3C3963" }}>
                 <Navbar />
-                <TopicList con={this.props.con} />
+                <TopicList />
             </div>
         )
     }

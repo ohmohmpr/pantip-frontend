@@ -49,46 +49,71 @@ class Navbar extends Component {
 
                   <SubMenu title={<span className="submenu-title-wrapper">เลือกห้อง</span>}>
 
-                    <Menu.Item key="room:26">
+                    {/* <Menu.Item key="room:26">
                       รัชดา
                       </Menu.Item>
                     <Menu.Item key="room:27">
                       ราชดำเนิน
-                      </Menu.Item>
+                      </Menu.Item> */}
 
                     <Menu.Item key="room:31">
-                      ศุภชลาศัย
-                      </Menu.Item>
+                      <a
+                        href={'http://localhost:3000/siam'}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          color: "#c2c2c2",
+                          marginBottom: "4px",
+                          fontSize: "120%"
+                        }}
+                      >
+                        ศุภชลาศัย
+                      </a>
+
+                    </Menu.Item>
                     <Menu.Item key="room:32">
-                    <a 
-                      href={'http://localhost:3000/siam'} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      style={{ 
-                        color: "#c2c2c2", 
-                        marginBottom: "4px", 
-                        fontSize: "120%"
-                         }}  >
-                            สยามสแควร์
-                           </a>
-                     
-                      </Menu.Item>
-                      
-                    <Menu.Item key="room:34">
+                      <a
+                        href={'http://localhost:3000/siam'}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          color: "#c2c2c2",
+                          marginBottom: "4px",
+                          fontSize: "120%"
+                        }}
+                      >
+                        สยามสแควร์
+                      </a>
+
+                    </Menu.Item>
+
+                    {/* <Menu.Item key="room:34">
                       สินธร
-                      </Menu.Item>
+                      </Menu.Item> */}
                     <Menu.Item key="room:35">
-                      สีลม
-                      </Menu.Item>
-                    <Menu.Item key="room:36">
+                      <a
+                        href={'http://localhost:3000/finance'}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          color: "#c2c2c2",
+                          marginBottom: "4px",
+                          fontSize: "120%"
+                        }}
+                      >
+                        สีลม
+                      </a>
+
+                    </Menu.Item>
+                    {/* <Menu.Item key="room:36">
                       หว้ากอ
-                      </Menu.Item>
+                      </Menu.Item> */}
 
                   </SubMenu>
 
 
                   <Menu.Item key="Post">
-                    <a href="/forum" className="navbar-item">ตั้งกระทู้</a>
+                    <a href="/createtopic" className="navbar-item">ตั้งกระทู้</a>
                   </Menu.Item>
 
                   <Menu.Item key="Login">

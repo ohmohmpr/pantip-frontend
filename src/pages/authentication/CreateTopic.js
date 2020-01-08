@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Navbar from '../components/Navbar';
+import Navbar from '../../components/Navbar';
 import { Row, Col, Input, Button, Form, Upload, Icon } from 'antd'
-import Axios from '../config/api.service'
+import Axios from '../../config/api.service'
 
 const { TextArea } = Input;
 
-class CreatePost extends Component {
+class CreateTopic1 extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -24,6 +24,7 @@ class CreatePost extends Component {
         Axios.post('/create-post', payload)
           .then(result => {
             console.log(result)
+            alert("Done")
           })
           .catch(err => {
             console.log(err)
@@ -140,5 +141,5 @@ class CreatePost extends Component {
   }
 }
 
-const Forum = Form.create()(CreatePost);
-export default Forum
+const CreateTopic = Form.create()(CreateTopic1);
+export default CreateTopic

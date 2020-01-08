@@ -1,30 +1,24 @@
 import React, { Component } from 'react'
 import Axios from '../config/api.service'
+import { withRouter } from "react-router";
 
-export default class Room extends Component {
+class Room extends Component {
   constructor(props) {
     super(props)
     this.state = {
       postList: [],
-      topicNumber: ''
+      room: '',
     }
   }
 
-  // handleCick = (number) => {
-  //   this.setState({
-  //     topicNumber: number
-  //   })
-  //   console.log(this.state.topicNumber)
-  // }
-
-
   componentDidMount() {
-    Axios.get('/posts').then((response) => {
-      // console.log(response.data)
+    let path = this.props.location.pathname
+    // let lastSlash = path.lastIndexOf("/")
+    // let page = path.slice(lastSlash + 1)
+    Axios.get(`${path}`).then((response) => {
       this.setState({
         postList: response.data
       })
-      // console.log(this.state.postList)
     })
   }
   render() {
@@ -44,3 +38,4 @@ export default class Room extends Component {
     )
   }
 }
+export default withRouter(Room)
