@@ -41,31 +41,37 @@ export default class Home extends Component {
             <Col span={16} style={{ backgroundColor: "white", marginTop: "33px" }}>
               <Row style={{ height: "300px", backgroundColor: '#3C3963' }} >
                 <Carousel autoplay>
-                  <div>
-                    <h3>1</h3>
+
+                  <div  >
+                    <img src="https://i.ibb.co/HFjxmH0/ad.jpg" alt="ad1" style={{
+                      display: 'block',
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                      width: '60%',
+                    }} />
                   </div>
                   <div>
-                    <h3>2</h3>
+                    <img src="https://i.ibb.co/NSx58jJ/ad2.jpg" alt="ad2" style={{
+                       display: 'block',
+                       marginLeft: 'auto',
+                       marginRight: 'auto',
+                       width: '60%',
+                    }} />
                   </div>
-                  <div>
-                    <h3>3</h3>
-                  </div>
-                  <div>
-                    <h3>4</h3>
-                  </div>
+
                 </Carousel>
               </Row>
 
               <Row type="flex" justify="space-between" className="background-web" style={{ backgroundColor: '#3C3963' }}>
                 <Col className="content" span={17} >
                   <NewFeed />
-                    
+
                   {/* <PostList2 postList={this.state.postList[0]} /> */}
 
                 </Col>
 
 
-                <Col className="content" span={6} style={{ color: "#c7c7c7", backgroundColor: "#2c2a49" }}>
+                <Col className="content" span={6} style={{ color: "#c7c7c7", backgroundColor: "#2c2a49", height : "245px" }}>
                   <Tag />
                 </Col>
 

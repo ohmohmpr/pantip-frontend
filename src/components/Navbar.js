@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Row, Col, Menu, Affix } from 'antd';
-import { connect } from 'react-redux'
 import { logout } from '../redux/actions/index'
-
+import { connect } from 'react-redux'
 const { SubMenu } = Menu;
 
 class Navbar extends Component {
@@ -14,11 +13,14 @@ class Navbar extends Component {
   }
 
   render() {
-
+    let Background = "https://i.ibb.co/v36Xcdj/pantipnavbar.jpg"
     const navbar = {
       height: '235px',
       backgroundColor: '#3C3963',
-      borderBottom: '1px solid rgba(0, 0, 0, 1)'
+      borderBottom: '1px solid rgba(0, 0, 0, 1)',
+      backgroundImage: `url(${Background}) `,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
     }
     let statusBar
     let role = this.props.user.role
@@ -36,8 +38,13 @@ class Navbar extends Component {
 
     return (
       <div>
-        <Row style={navbar} type="flex" align="bottom" justify="center" >
+        {/* align="bottom" */}
+        <Row style={navbar} type="flex" align="bottom" justify="center"  >
+
           <Col span={12}>
+            {/* <Row>
+              <img src="https://i.ibb.co/v36Xcdj/pantipnavbar.jpg" alt="pantipnavbar" style={{ height: "100px" }} />
+            </Row> */}
             <Row style={{ backgroundColor: "1F1D33" }}>
 
               <Affix offsetTop={0} onChange={affixed => console.log(affixed)}>
@@ -124,9 +131,11 @@ class Navbar extends Component {
               </Affix>
 
             </Row>
+
           </Col>
+
         </Row>
-      </div>
+      </div >
     )
   }
 }

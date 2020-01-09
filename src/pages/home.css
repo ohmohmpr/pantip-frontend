@@ -15,9 +15,11 @@
 
 .ant-carousel .slick-slide {
   text-align: center;
-  height: 160px;
+  
+  height: 250px;
+  /* width: 375px; */
   line-height: 160px;
-  background: #364d79;
+  background: #3C3963;
   overflow: hidden;
 }
 

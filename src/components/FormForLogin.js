@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Input, Button } from 'antd'
+import { Form, Input, Button, Row, Col } from 'antd'
 import './FormForLogin.css'
 import Axios from '../config/api.service'
 import jwtDecode from 'jwt-decode'
@@ -70,20 +70,32 @@ class FormForLogin extends Component {
               ],
             })(<Input.Password />)}
           </Form.Item>
-          <Button
-            style={{ backgroundColor: "#605d89" }}
-            htmlType="submit"
-          >
-            <span style={{ color: "#e9e5f6" }}>เข้าใช้งาน</span>
-          </Button>
+          <Row>
+            <Col offset={5}>
+              <Button
+                style={{ backgroundColor: "#605d89" }}
+                htmlType="submit"
+              >
+                <span style={{ color: "#e9e5f6" }}>เข้าใช้งาน</span>
+              </Button>
+            </Col>
+          </Row>
           <br />
           <br />
-          <span style={{ color: "#e9e5f6" }}>ฉันต้องการเป็นสมาชิกพันทิปดอทคอม</span>
+          <Row>
+            <Col offset={5}>
+              <span style={{ color: "#e9e5f6" }}>ฉันต้องการเป็นสมาชิกพันทิปดอทคอม</span>
+            </Col>
+          </Row>
           <br />
           <br />
-          <Button style={{ backgroundColor: "#55C10D" }}>
-            <a href="/signup" className="navbar-item" style={{ color: "#e9e5f6" }}>สมัครเลย</a>
-          </Button>
+          <Row>
+            <Col offset={5}>
+              <Button style={{ backgroundColor: "#55C10D" }}>
+                <a href="/signup" className="navbar-item" style={{ color: "#e9e5f6" }}>สมัครเลย</a>
+              </Button>
+            </Col>
+          </Row>
         </Form >
       </div >
     )

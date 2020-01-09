@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Input, Button } from 'antd'
+import { Form, Input, Button, Row, Col } from 'antd'
 import Axios from '../config/api.service'
 
 
@@ -67,8 +67,8 @@ class FormForSignUp extends Component {
         border: "solid 1px #25223C",
         padding: "10px"
       }} >
-        <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-          
+        <Form {...formItemLayout} onSubmit={this.handleSubmit}  >
+
           <Form.Item label='อีเมล/นามแฝง'  >
             {getFieldDecorator('username', {
               rules: [
@@ -110,9 +110,14 @@ class FormForSignUp extends Component {
           <br />
           <br />
           <Form.Item>
-            <Button block type="primary" htmlType="submit" className="login-form-button">
-              สมัครเลย
+            <Row>
+              <Col offset={2}>
+                <Button block type="primary" htmlType="submit" className="login-form-button">
+                  สมัครเลย
             </Button>
+              </Col>
+            </Row>
+
           </Form.Item>
         </Form >
       </div>
