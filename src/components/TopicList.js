@@ -17,19 +17,24 @@ class TopicList1 extends Component {
     }
   }
 
-  componentDidMount() {
+  fetchDataComment(){
     let path = this.props.location.pathname
     let lastSlash = path.lastIndexOf("/")
     let page = path.slice(lastSlash + 1)
     Axios.get(`${path}`).then((response) => {
-      console.log(response.data.user.profile_img_url)
+      console.log(response.data.img_url)
       this.setState({
         post: response.data,
         commentsList: response.data.comments,
         page: page,
         owner: response.data.user.profile_img_url,
       })
+      // console.log(this.state.post.createdAt)
     })
+  }
+
+  componentDidMount() {
+    this.fetchDataComment()
 
   }
 
@@ -37,15 +42,16 @@ class TopicList1 extends Component {
     let post_id = this.state.page
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, value) => {
-      console.log(value.comment)
+      // console.log(value.comment)
       if (!err) {
         Axios.post(`/create-comment/${post_id}`, {
           content: value.comment,
           post_id: post_id,
         })
           .then(result => {
-            alert("done")
+            // alert("done")
             console.log(result)
+            this.fetchDataComment()
           })
           .catch(err => {
             alert("failed to comment")
@@ -60,6 +66,9 @@ class TopicList1 extends Component {
   render() {
 
     const { getFieldDecorator } = this.props.form;
+    // let ISODates = this.state.post.createdAt
+    // let postdate = new Date(ISODates)
+    // console.log(postdate)
     return (
       <Row type="flex" justify="center">
         <Col span={18} >
@@ -74,6 +83,9 @@ class TopicList1 extends Component {
               <Col>
                 <div style={{ color: "#cccccc", margin: "40px 40px" }}>
                   {this.state.post.content}
+                  <br />
+                  <img src={this.state.post.image_url} />
+
                 </div>
               </Col>
             </Row>

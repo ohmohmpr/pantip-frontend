@@ -30,7 +30,7 @@ const components = {
     },
     topic: {
       component: 'Topic',
-      url: '/topic',
+      url: '/topic/:id',
     },
     myfeed: {
       component: 'Home',
@@ -38,7 +38,7 @@ const components = {
     },
     roomforum: {
       component: 'RoomForum',
-      url: '/',
+      url: '/:asdf',
     },
   };
   

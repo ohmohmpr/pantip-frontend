@@ -45,7 +45,7 @@ class Navbar extends Component {
             {/* <Row>
               <img src="https://i.ibb.co/v36Xcdj/pantipnavbar.jpg" alt="pantipnavbar" style={{ height: "100px" }} />
             </Row> */}
-            <Row style={{ backgroundColor: "1F1D33" }}>
+            <Row style={{ backgroundColor: "1F1D33" }} >
 
               <Affix offsetTop={0} onChange={affixed => console.log(affixed)}>
                 <Menu mode="horizontal" style={{ backgroundColor: "#2D2A49", color: "#e9e5f6" }} theme="dark">
@@ -65,7 +65,7 @@ class Navbar extends Component {
 
                     <Menu.Item key="room:31">
                       <a
-                        href={'http://localhost:3000/siam'}
+                        href={'http://localhost:3000/sports'}
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
